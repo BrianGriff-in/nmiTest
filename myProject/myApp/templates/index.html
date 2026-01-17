@@ -1,0 +1,462 @@
+         {% load static %}
+
+   <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <!-- website's icon -->
+
+
+    <link rel="icon" href="{% static 'myApp/favicon.ico' %}?v=2">
+    <link rel="icon" href="{% static 'myApp/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'myApp/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'myApp/favicon-16x16.png' %}">
+    <!-- Optional but very good practice nowadays -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'myApp/apple-touch-icon.png' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!--  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sreng Seavhou | Fintech Student</title>
+
+    <meta name="description" content="Sreng Seavhou – Fintech student with skills in JavaScript, C#, SQL, Git, and web development.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+</head>
+    <style>
+    :root {
+        --bg: #0f1220;
+        --card: rgba(255,255,255,0.06);
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #6366f1;
+        --border: rgba(255,255,255,0.12);
+    }
+
+    [data-theme="light"] {
+        --bg: #f5f7fb;
+        --card: white;
+        --text: #111827;
+        --muted: #4b5563;
+        --accent: #4f46e5;
+        --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    /* NAV */
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        background: rgba(0,0,0,0.4);
+        border-bottom: 1px solid var(--border);
+    }
+
+    nav ul {
+        margin: 0;
+        padding: 16px 24px;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 20px;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .toggle {
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+
+    /* SECTIONS */
+    section {
+        padding: 90px 20px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    h1, h2 { margin-top: 0; }
+
+    h2 {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+    }
+
+    /* HERO */
+    .hero {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero span { color: var(--accent); }
+
+    .hero p {
+        max-width: 650px;
+        font-size: 1.15rem;
+        color: var(--muted);
+    }
+
+    /* GRID / CARDS */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+    }
+
+    .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 24px;
+        transition: transform 0.3s;
+    }
+
+    .card:hover { transform: translateY(-6px); }
+
+    /* SKILLS */
+    .skill { margin-bottom: 15px; }
+
+    .skill span {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+    }
+
+    .bar {
+        height: 8px;
+        background: var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), #22d3ee);
+    }
+
+    /* CONTACT */
+    .contact a {
+        display: block;
+        color: var(--text);
+        text-decoration: none;
+        margin-bottom: 12px;
+        font-weight: 500;
+    }
+
+    .contact a:hover {
+        color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 30px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+    }
+
+    /* FADE ANIMATION */
+    .fade {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 0.6s ease;
+    }
+    .fade.show {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* card height */
+    .card {
+        height: 300px;
+        text-align: center;
+    }
+    /*  */
+    /*  blink txtName */
+/* typing cursor */
+.cursor {
+    display: inline-block;
+    width: 0.6ch;
+    color: var(--accent);
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+    /*  */
+    /* website icon */
+        .box {
+            display: flex;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: none;
+            cursor: pointer;
+            border: 1px gray solid;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #fff;
+        }
+    /*  */
+    /* contact info */
+    #contact-info {
+        display: flex;
+        flex-direction: column;
+    }
+    #contact-info a {
+        width: fit-content;
+    }
+    /*  */
+    </style>
+    </head>
+
+    <body>
+
+    <nav>
+        <ul>
+
+            <a href="" target="_self" id="js-totop">
+                <div style="padding: 20px 10px; ">
+                    <strong>Sreng Seavhou</strong></li>
+                </div>
+            </a>  
+
+
+            <div>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <button class="toggle" id="themeBtn" style="margin-left: 50px; padding: 10px;">🌙</button>
+            </div>
+        </ul>
+    </nav>
+    
+    {% for image in image %}
+        
+    <div style="width: 100%; display: flex; align-items: cneter; justify-content: center; margin-top: 100px; margin-bottom: -150px;">
+        <div>  
+            <img src="{{ image.image.url }}" alt="" width="250" height="500">
+        </div>
+    </div>
+    {% empty %}
+        <p>No images found.</p>
+    {% endfor %}
+    <section class="hero fade">
+            <h1>
+            Hi, I’m 
+            <span id="typing-name"></span><span class="cursor">|</span>
+            </h1>
+
+        <p>
+            Fintech student with a strong interest in software development,
+            databases, and real-world systems. I focus on fundamentals,
+            clean logic, and continuous improvement.
+        </p>
+    </section>
+
+    <section id="about" class="fade">
+        <h2>About Me</h2>
+        <p>
+            I’m a second-year Fintech major who enjoys learning how
+            software, finance, and databases work together.
+        </p>
+        <p>
+            I currently practice web development, JavaScript, C#, Java, 
+            SQL, and Git through small projects and exercises aiming to be able to declare myself as a full-stack developer. Last but not Least, I have been improving English's skills everyday eagering to new opportunities.
+        </p>
+    </section>
+
+    <section id="skills" class="fade">
+        <h2>Skills</h2>
+        <div class="skill">
+            <span><strong>UX/UI design</strong><em>Intermediate</em></span>
+            <div class="bar"><div class="fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill">
+            <span><strong>Java Programming</strong><em>Intermediate</em></span>
+            <div class="bar"><div class="fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill">
+            <span><strong>JavaScript</strong><em>Intermediate</em></span>
+            <div class="bar"><div class="fill" style="width:75%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><strong>C#</strong><em>Intermediate</em></span>
+            <div class="bar"><div class="fill" style="width:70%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><strong>HTML / CSS</strong><em>Intermediate</em></span>
+            <div class="bar"><div class="fill" style="width:70%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><strong>React</strong><em>Basic</em></span>
+            <div class="bar"><div class="fill" style="width:35%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><strong>jQuery</strong><em>Basic</em></span>
+            <div class="bar"><div class="fill" style="width:30%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><strong>SQL / T-SQL</strong><em>Learning</em></span>
+            <div class="bar"><div class="fill" style="width:40%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><strong>Git & GitHub</strong><em>Intermediate</em></span>
+            <div class="bar"><div class="fill" style="width:60%"></div></div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade">
+        <h2>Projects</h2>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Coming Soon</h3>
+
+            </div>
+
+            <div class="card">
+                <h3>Coming Soon</h3>
+
+            </div>
+
+            <div class="card">
+                <h3>Coming Soon</h3>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade">
+        <h2>Contact</h2>
+
+        <div class="contact" id="contact-info">
+            <a href="mailto:SrengSeavhou@gmail.com">📧 Email: SrengSeavhou@gmail.com</a>
+            <a href="https://www.youtube.com/@AngKorDesign168">▶️ Youtube: Angkor Design</a>
+
+            <a href="https://t.me/Seavhou_Sreng" target="_blank">📱 Telegram: 081622864</a>
+            <a href="https://www.facebook.com/search/top?q=Sreng%20Seavhou" target="_blank">
+                📘 Facebook: Sreng Seavhou
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 · Sreng Seavhou
+    </footer>
+
+    <script>
+    /* THEME TOGGLE */
+/* THEME TOGGLE */
+const btn = document.getElementById("themeBtn");
+const saved = localStorage.getItem("theme");
+
+/* load saved theme */
+if (saved === "light") {
+    document.body.dataset.theme = "light";
+    btn.textContent = "☀️";
+} else {
+    btn.textContent = "🌙";
+}
+
+btn.onclick = () => {
+    const isLight = document.body.dataset.theme === "light";
+
+    document.body.dataset.theme = isLight ? "" : "light";
+    btn.textContent = isLight ? "🌙" : "☀️";
+
+    localStorage.setItem("theme", isLight ? "" : "light");
+};
+
+    /* FADE IN */
+    const items = document.querySelectorAll(".fade");
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => e.isIntersecting && e.target.classList.add("show"));
+    });
+    items.forEach(i => io.observe(i));
+
+    // blinking label name 
+
+/* typing name effect */
+/* typing overwrite loop */
+const nameText = "Sreng Seavhou";
+const nameEl = document.getElementById("typing-name");
+
+let i = 0;
+let isDeleting = false;
+
+function typeLoop() {
+    if (!isDeleting && i < nameText.length) {
+        // typing
+        nameEl.textContent += nameText.charAt(i);
+        i++;
+        setTimeout(typeLoop, 120);
+    } 
+    else if (isDeleting && i > 0) {
+        // deleting
+        nameEl.textContent = nameText.substring(0, i - 1);
+        i--;
+        setTimeout(typeLoop, 80);
+    } 
+    else {
+        // pause before switching
+        isDeleting = !isDeleting;
+        setTimeout(typeLoop, 1000);
+    }
+}
+
+typeLoop();
+
+// to top behavior
+$('#js-totop').click(function(e) {
+    e.preventDefault(); // prevent default anchor action
+    $('html, body').scrollTop(0); // 2000ms = 2 seconds
+});
+// process 
+
+
+    </script>
+
+    </body>
+    </html>
