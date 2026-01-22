@@ -268,7 +268,7 @@
     
     {% for image in image %}
         
-    <div style="width: 100%; display: flex; align-items: cneter; justify-content: center; margin-top: 100px; margin-bottom: -150px;">
+    <div style="width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 100px; margin-bottom: -150px;">
         <div>  
             <img src="{{ image.image.url }}" alt="" width="250" height="500">
         </div>
@@ -368,23 +368,50 @@
         </div>
     </section>
 
-    <section id="contact" class="fade">
-        <h2>Contact</h2>
+    <section id="contact" class="fade"> 
+    <div class="contact-qr" style="display: flex; justify-content: space-between;">
+        <div>
+                <h2>Contact</h2>
 
-        <div class="contact" id="contact-info">
-            <a href="mailto:SrengSeavhou@gmail.com">📧 Email: SrengSeavhou@gmail.com</a>
-            <a href="https://www.youtube.com/@AngKorDesign168">▶️ Youtube: Angkor Design</a>
+                <div class="contact" id="contact-info">
+                    <a href="mailto:SrengSeavhou@gmail.com">📧 Email: SrengSeavhou@gmail.com</a>
+                    <a href="https://www.youtube.com/@AngKorDesign168">▶️ Youtube: Angkor Design</a>
 
-            <a href="https://t.me/Seavhou_Sreng" target="_blank">📱 Telegram: 081622864</a>
-            <a href="https://www.facebook.com/search/top?q=Sreng%20Seavhou" target="_blank">
-                📘 Facebook: Sreng Seavhou
-            </a>
+                    <a href="https://t.me/Seavhou_Sreng" target="_blank">📱 Telegram: 081622864</a>
+                    <a href="https://www.facebook.com/search/top?q=Sreng%20Seavhou" target="_blank">
+                        📘 Facebook: Sreng Seavhou
+                    </a>
+                </div>
+       
         </div>
+        <div>
+                <h2>Scan for the info</h2>
+                {% for image in qrImages %}
+                    
+                <div style="width: 100%; display: flex; align-items: center; justify-content: center; ">
+                    <div>  
+                        <img src="{{ image.image.url }}" alt="" width="250" height="300">
+                    </div>
+                </div>
+                {% empty %}
+                    <p>No images found.</p>
+                {% endfor %}
+
+        </div>
+
+
+    </div>
+
     </section>
 
     <footer>
         © 2026 · Sreng Seavhou
     </footer>
+    
+    {% for icon in icons %}
+        
+    {% endfor %}
+        
 
     <script>
     /* THEME TOGGLE */
