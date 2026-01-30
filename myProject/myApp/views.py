@@ -7,8 +7,8 @@ from .models import Image, ImageQRCode, ImageIcons
 def home(request):
     img = Image.objects.all()
     img1 = ImageQRCode.objects.all()
-    return render(request=request, template_name='index.html', context={'image': img, 'qrImages': img1})
+    return render(request=request, template_name='myApp/index.html', context={'image': img, 'qrImages': img1})
 
 def detail(request, id):
     icons = get_object_or_404(ImageIcons, id=id)
-    return render(request=request, template_name='index.html', context={'imgIcons': icons})
+    return render(request=request, template_name='myApp/index.html', context={'imgIcons': icons})
